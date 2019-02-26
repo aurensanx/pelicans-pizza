@@ -1,6 +1,6 @@
 const fs = require("fs");
 
-const fileName = "c_medium";
+const fileName = "d_big";
 
 // read file
 const fileInput = fs.readFileSync('sampledata/in/' + fileName + '.in', 'utf8');
