@@ -6,16 +6,25 @@ const [R, C, L, H] = headData.split(" ").map(h => parseInt(h));
 const data = bodyData.map(d => d.split(""));
 const N = 10000000;
 
-
 // solution
 // "str1,str2,str3,str4".match(/T/g) || []).length
 
-// FIXME corregir a tamaños rectangulares menores que H
-const divisors = n => [...Array(n + 1).keys()].slice(1).filter(o => (!(n % o)));
-const possibleShapes = divisors => divisors.map((d, i) => [d, divisors[divisors.length - 1 - i]]);
+const getPossibleShapes = n => {
+  const possibleShapes = [];
+  for (let i = 1; i <= n; i++) {
+    for (let j = 1; j <= n; j++) {
+      if (i * j <= n) {
+        possibleShapes.push([i, j]);
+      } else {
+        break;
+      }
+    }
+  }
+  return possibleShapes;
+};
 
-const POSSIBLE_SHAPES = possibleShapes(divisors(H));
-
+// FIXME ugly solution for H greater than C or R
+const POSSIBLE_SHAPES = getPossibleShapes(Math.min(H, C, R));
 
 function getRandomInt(min, max) {
   min = Math.ceil(min);
