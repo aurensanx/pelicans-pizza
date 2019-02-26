@@ -23,12 +23,9 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-
 let numberOfSlices = 0;
 let coordinatesOfSlices = [];
 
-let finalNumberOfSlices = 0;
-let finalCoordinatesOfSlices = [];
 
 [...Array(N)].map((n, i) => {
 
@@ -57,13 +54,8 @@ let finalCoordinatesOfSlices = [];
     coordinatesOfSlices += [r, c, r + shape[0] - 1, c + shape[1] - 1].join(" ") + "\n";
   }
 
-  if (numberOfSlices > finalNumberOfSlices) {
-    finalNumberOfSlices = numberOfSlices;
-    finalCoordinatesOfSlices = coordinatesOfSlices;
-  }
-
 });
 
 
 // escribir respuesta
-writeFile(finalNumberOfSlices + "\n" + finalCoordinatesOfSlices);
+writeFile(numberOfSlices + "\n" + coordinatesOfSlices);
