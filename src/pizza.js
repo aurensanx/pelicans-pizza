@@ -10,7 +10,7 @@ const N = 10000000;
 // solution
 // "str1,str2,str3,str4".match(/T/g) || []).length
 
-// corregir a tamaños rectangulares menores que H
+// FIXME corregir a tamaños rectangulares menores que H
 const divisors = n => [...Array(n + 1).keys()].slice(1).filter(o => (!(n % o)));
 const possibleShapes = divisors => divisors.map((d, i) => [d, divisors[divisors.length - 1 - i]]);
 
