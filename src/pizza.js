@@ -27,13 +27,18 @@ let numberOfSlices = 0;
 let coordinatesOfSlices = [];
 
 
-[...Array(N)].map((n, i) => {
+[...Array(N)].map(() => {
 
   // const data = _.cloneDeep(constData);
 
+  // generate random values
+  // shape of slice
   const shape = POSSIBLE_SHAPES[getRandomInt(0, POSSIBLE_SHAPES.length - 1)];
   // const shape = POSSIBLE_SHAPES[1];
+
+  // random row
   const r = getRandomInt(0, Math.max(R - 1 - shape[0], 0));
+  // random column
   const c = getRandomInt(0, Math.max(C - 1 - shape[1], 0));
 
 
@@ -43,6 +48,7 @@ let coordinatesOfSlices = [];
     return a + b;
   });
 
+  // update used cells to 1
   if (checkNumberOfLetter('T') >= L && checkNumberOfLetter('M') >= L && checkNumberOfLetter(1) === 0) {
     [...Array(shape[0])].forEach((v, row) => {
       [...Array(shape[1])].forEach((v, column) => {
@@ -50,6 +56,7 @@ let coordinatesOfSlices = [];
       })
     });
 
+    // update results
     numberOfSlices++;
     coordinatesOfSlices += [r, c, r + shape[0] - 1, c + shape[1] - 1].join(" ") + "\n";
   }
